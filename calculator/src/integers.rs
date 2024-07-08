@@ -20,6 +20,11 @@ pub fn is_even(n: u32) -> bool {
     false
 }
 
+pub fn factorial(n:u32) -> u32 {
+    if n == 0 {return 1;}
+    else {return n*factorial(n-1);}
+}
+
 #[cfg(test)]
 mod tests {
     use crate::integers::*;
@@ -57,5 +62,19 @@ mod tests {
         assert_ne!(true, is_even(1));
     }
 
+    #[test]
+    fn test_factorial1() {
+        assert_eq!(1, factorial(0));
+    }
+
+    #[test]
+    fn test_factorial2() {
+        assert_eq!(1, factorial(1));
+    }
+
+    #[test]
+    fn test_factorial3() {
+        assert_eq!(120, factorial(5));
+    }
 
 }
