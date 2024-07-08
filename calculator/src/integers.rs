@@ -10,9 +10,8 @@ pub fn compute(a: u32, b: u32) -> u32 {
 pub fn speed(start: u32, end: u32, time_elapsed: u32) -> u32 {
     // TODO: define a variable named `distance` with the right value to get tests to pass
     //  Do you need to annotate the type of `distance`? Why or why not?
-    let distance = end - start;
-    // Don't change the line below
-    distance / time_elapsed
+    if time_elapsed == 0 { panic!("The journey took no time at all, that's impossible!");}
+        (end - start) / time_elapsed
 }
 
 /// Return `true` if `n` is even, `false` otherwise.
@@ -43,6 +42,12 @@ mod tests {
         assert_eq!(speed(10, 31, 10), 2);    }
 
     #[test]
+    #[should_panic(expected = "The journey took no time at all, that's impossible!")]
+    fn case_spee4(){
+         assert_eq!(1, speed(5, 2, 0));
+    }
+
+    #[test]
     fn test_is_even1() {
         assert_eq!(true, is_even(2));
     }
@@ -51,6 +56,6 @@ mod tests {
     fn test_is_even2() {
         assert_ne!(true, is_even(1));
     }
-    
+
 
 }
