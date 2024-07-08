@@ -108,4 +108,10 @@ mod tests {
         assert_eq!(6, factorial(3));
     }
 
+    #[test]
+    fn bool_to_u8() {
+        let v: u8 = 1;
+        assert_eq!(true as u8, v);
+    }
+
 }
