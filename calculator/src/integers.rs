@@ -21,8 +21,29 @@ pub fn is_even(n: u32) -> bool {
 }
 
 pub fn factorial(n:u32) -> u32 {
+    let mut f=1_u32;
+    // let mut nn = n;
+    if n==0 || n==1 {return f;}
+    //using a for loop
+    for i in 2..=n {
+        println!("i={i}");
+        f *= i;
+    }
+    // using a while loop
+    /* 
+    while nn >= 2 {
+        f *= nn;
+        nn -= 1;
+        //println!("{n} : {f} {nn}");
+    }
+    */
+    f
+
+    // using recursion
+    /*
     if n == 0 {return 1;}
     else {return n*factorial(n-1);}
+    */
 }
 
 #[cfg(test)]
@@ -74,7 +95,7 @@ mod tests {
 
     #[test]
     fn test_factorial3() {
-        assert_eq!(120, factorial(5));
+        assert_eq!(6, factorial(3));
     }
 
 }
