@@ -15,6 +15,12 @@ pub fn speed(start: u32, end: u32, time_elapsed: u32) -> u32 {
     distance / time_elapsed
 }
 
+/// Return `true` if `n` is even, `false` otherwise.
+pub fn is_even(n: u32) -> bool {
+    if n%2==0 {return true;}
+    false
+}
+
 #[cfg(test)]
 mod tests {
     use crate::integers::*;
@@ -25,15 +31,26 @@ mod tests {
         assert_eq!(17, compute(1, 4));
     }
     #[test]
-    fn case1() {
+    fn case_speed1() {
         assert_eq!(speed(0, 10, 10), 1);
     } 
     #[test]
-    fn case2() {
+    fn case_speed2() {
         assert_eq!(speed(10, 30, 10), 2);
     }
     #[test]
-    fn case3() {
+    fn case_speed3() {
         assert_eq!(speed(10, 31, 10), 2);    }
+
+    #[test]
+    fn test_is_even1() {
+        assert_eq!(true, is_even(2));
+    }
+
+    #[test]
+    fn test_is_even2() {
+        assert_ne!(true, is_even(1));
+    }
+    
 
 }
