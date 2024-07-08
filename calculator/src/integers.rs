@@ -26,8 +26,8 @@ pub fn factorial(n:u32) -> u32 {
     if n==0 || n==1 {return f;}
     //using a for loop
     for i in 2..=n {
-        println!("i={i}");
-        f *= i;
+        //println!("i={i}");
+        f = f.saturating_mul(i);
     }
     // using a while loop
     /* 
@@ -83,11 +83,12 @@ mod tests {
         assert_ne!(true, is_even(1));
     }
 
+    #[test]
     fn twentieth() {
         // 20! is 2432902008176640000, which is too large to fit in a u32
         // With the default dev profile, this will panic when you run `cargo test`
         // We want it to wrap around instead
-        assert_eq!(factorial(20), 2_192_834_560);
+        assert_eq!(factorial(20), u32::MAX);
         //                           ☝️
         // A large number literal using underscores to improve readability!
     }
