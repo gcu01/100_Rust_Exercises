@@ -1,11 +1,14 @@
-struct Order {
-    price: u32,
-    quantity: u32
+pub struct Order {
+    pub price: u32,
+    pub quantity: u32
 }
 
 impl Order {
     fn is_available(self) -> bool {
         self.quantity > 0
+    }
+    pub fn my_fct(a:u32) -> bool {
+        a>0
     }
 }
 
