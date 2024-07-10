@@ -12,6 +12,35 @@ impl Order {
     }
 }
 
+pub struct Ticket {
+    pub title: String,
+    pub description: String,
+    pub status: String
+}
+
+impl Ticket {
+    pub fn new (title: String, description: String, status: String) -> Self {
+
+        if status != "To-Do" && status != "In Progress" && status != "Done" {
+            panic!("wrong status");
+        }
+
+        if title.is_empty() || title.len() > 50 {
+            panic!("wrong title");
+        }
+
+        if description.is_empty() || description.len()>500 {
+            panic!("wrong description");
+        }
+
+        Ticket {
+            title: title,
+            description: description,
+            status: status
+        }
+    } 
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -26,5 +55,17 @@ mod tests {
     fn test_in_not_available() {
         let o:Order = Order{ price:2, quantity:0};
         assert!(!o.is_available());
+    }
+
+    #[test]
+    #[should_panic(expected="wrong status")]
+    fn test_new_status() {
+        Ticket::new("a".to_string(), "b".to_string(), "Not Done".to_string());
+    }
+
+    #[test]
+    #[should_panic("wrong title")]
+    fn test_new_title() {
+        Ticket::new("".to_string(), "a".to_string(), "c".to_string());
     }
 }
