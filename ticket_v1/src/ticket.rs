@@ -13,34 +13,45 @@ impl Order {
 }
 
 pub mod ticket_t1{
-pub struct Ticket {
-    pub title: String,
-    pub description: String,
-    pub status: String
-}
 
-impl Ticket {
-    pub fn new (title: String, description: String, status: String) -> Self {
+    pub struct Ticket {
+        title: String,
+        description: String,
+        status: String
+    }
 
-        if status != "To-Do" && status != "In Progress" && status != "Done" {
-            panic!("wrong status");
+    impl Ticket {
+        pub fn new (title: String, description: String, status: String) -> Self {
+
+            if status != "To-Do" && status != "In Progress" && status != "Done" {
+                panic!("wrong status");
+            }
+
+            if title.is_empty() || title.len() > 50 {
+                panic!("wrong title");
+            }
+
+            if description.is_empty() || description.len()>500 {
+                panic!("wrong description");
+            }
+
+            Ticket {
+                title: title,
+                description: description,
+                status: status
+            }
+        } 
+        pub fn title(self) -> String {
+            self.title
         }
-
-        if title.is_empty() || title.len() > 50 {
-            panic!("wrong title");
+        pub fn description(self) -> String {
+            self.description
         }
-
-        if description.is_empty() || description.len()>500 {
-            panic!("wrong description");
-        }
-
-        Ticket {
-            title: title,
-            description: description,
-            status: status
-        }
-    } 
-}
+        pub fn status(self) -> String {
+            self.status
+        }        
+        
+    }
 }
 
 mod helpers {
@@ -54,7 +65,7 @@ mod helpers {
 mod tests {
     use super::*;
     //use crate::ticket::ticket_t1::Ticket;
-    use super::ticket_t1::Ticket;
+    use super::ticket_t1::*;
 
     #[test]
     fn test_is_available() {
@@ -82,8 +93,8 @@ mod tests {
 
     #[test]
     fn test_mod() {
-        let test_ticket:Ticket = Ticket{title:"title".to_string(), description:"description".to_string(), status:"Done".to_string()};
-        assert_eq! (test_ticket.title, helpers::create_todo_ticket("title".to_string(), "description".to_string()).title);
+        let test_ticket:Ticket = Ticket::new("title".to_string(), "description".to_string(), "Done".to_string());
+        assert_eq! (test_ticket.title(), helpers::create_todo_ticket("title".to_string(), "description".to_string()).title());
 
     }
 }
