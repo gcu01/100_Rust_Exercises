@@ -41,6 +41,13 @@ impl Ticket {
     } 
 }
 
+mod helpers {
+    use super::Ticket;
+    pub fn create_todo_ticket(title:String, description: String) -> Ticket {
+        Ticket::new(title, description, "To-Do".to_string())
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -67,5 +74,12 @@ mod tests {
     #[should_panic("wrong title")]
     fn test_new_title() {
         Ticket::new("".to_string(), "a".to_string(), "c".to_string());
+    }
+
+    #[test]
+    fn test_mod() {
+        let test_ticket:Ticket = Ticket{title:"title".to_string(), description:"description".to_string(), status:"Done".to_string()};
+        assert_eq! (test_ticket.title, helpers::create_todo_ticket("title".to_string(), "description".to_string()).title);
+
     }
 }
