@@ -1,5 +1,5 @@
 mod ticket;
-use ticket::*;
+use crate::ticket::{Order, ticket_t1::Ticket};
 
 fn main() {
     println!("Hello, world!");

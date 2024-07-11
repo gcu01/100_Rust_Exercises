@@ -12,6 +12,7 @@ impl Order {
     }
 }
 
+pub mod ticket_t1{
 pub struct Ticket {
     pub title: String,
     pub description: String,
@@ -40,9 +41,10 @@ impl Ticket {
         }
     } 
 }
+}
 
 mod helpers {
-    use super::Ticket;
+    use crate::ticket::ticket_t1::Ticket;
     pub fn create_todo_ticket(title:String, description: String) -> Ticket {
         Ticket::new(title, description, "To-Do".to_string())
     }
@@ -51,6 +53,8 @@ mod helpers {
 #[cfg(test)]
 mod tests {
     use super::*;
+    //use crate::ticket::ticket_t1::Ticket;
+    use super::ticket_t1::Ticket;
 
     #[test]
     fn test_is_available() {
