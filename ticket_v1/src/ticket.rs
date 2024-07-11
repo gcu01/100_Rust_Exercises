@@ -92,6 +92,7 @@ mod tests {
     use super::*;
     //use crate::ticket::ticket_t1::Ticket;
     use super::ticket_t1::*;
+    use std::mem::size_of;
 
     #[test]
     fn test_is_available() {
@@ -128,5 +129,18 @@ mod tests {
     fn test_set_title_empty () {
         let mut t:Ticket = Ticket::new("title".to_string(), "description".to_string(), "status".to_string());
         t.set_title("".to_string());
+    }
+
+    #[test]
+    fn u16_size() {
+        assert_eq!(2, size_of::<u16>());
+    }
+    #[test]
+    fn i32_size() {
+        assert_eq!(4, size_of::<i32>());
+    }
+    #[test]
+    fn bool_size() {
+        assert_eq!(1, size_of::<bool>());
     }
 }

@@ -6,5 +6,6 @@ fn main() {
     let my_o = Order{price:2, quantity:1};
     println!("function call {}", Order::my_fct(5));
 
-    let t:Ticket = Ticket::new("".to_string(), "v".to_string(), "f".to_string());
+    let t:Ticket = Ticket::new("a".to_string(), "v".to_string(), "Done".to_string());
+    println!("size of i32 = {}", std::mem::size_of::<i32>());
 }
