@@ -49,8 +49,34 @@ pub mod ticket_t1{
         }
         pub fn status(&self) -> &String {
             &self.status
-        }        
-        
+        }  
+        pub fn set_title(&mut self, new_title:String) {
+            if new_title.is_empty() {
+                panic!("the new title is empty");
+            } 
+            if new_title.len() > 50 {
+                panic!("the new title is too long (over 50 chars)");
+            }
+            self.title = new_title;
+        }
+        pub fn set_description(&mut self, new_description: String) {
+            if new_description.is_empty() {
+                panic!("the new description is empty");
+            }
+            if new_description.len() > 500 {
+                panic!("the new description is too long (over 500 chars)");
+            }
+            self.description = new_description;
+        }
+        pub fn set_status(&mut self, new_status:String) {
+            if new_status.is_empty() {
+                panic!("the new status is empty");
+            }
+            if new_status != "To-Do" && new_status != "In Progress" && new_status != "Done" {
+                panic!("wrong status");
+            }
+            self.status = new_status;
+        }
     }
 }
 
@@ -95,6 +121,12 @@ mod tests {
     fn test_mod() {
         let test_ticket:Ticket = Ticket::new("title".to_string(), "description".to_string(), "Done".to_string());
         assert_eq! (test_ticket.title(), helpers::create_todo_ticket("title".to_string(), "description".to_string()).title());
+    }
 
+    #[test]
+    #[should_panic("the new title is empty")]
+    fn test_set_title_empty () {
+        let mut t:Ticket = Ticket::new("title".to_string(), "description".to_string(), "status".to_string());
+        t.set_title("".to_string());
     }
 }
