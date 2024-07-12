@@ -143,4 +143,22 @@ mod tests {
     fn bool_size() {
         assert_eq!(1, size_of::<bool>());
     }
+
+    #[test]
+    fn u16_ref_size () {
+        assert_eq!(std::mem::size_of::<&u16>(), std::mem::size_of::<usize>());
+    }
+    #[test]
+    fn i32_ref_size () {
+        assert_eq!(std::mem::size_of::<&i32>(), std::mem::size_of::<usize>());
+    }
+    #[test]
+    fn Ticket_ref_size () {
+        assert_eq!(std::mem::size_of::<&Ticket>(), std::mem::size_of::<usize>());
+    }
+    #[test]
+    fn Ticket_size () {
+        assert_eq!(std::mem::size_of::<Ticket>(), 3*std::mem::size_of::<String>());
+    }
+
 }
