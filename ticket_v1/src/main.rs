@@ -1,5 +1,6 @@
 mod ticket;
 use crate::ticket::{Order, ticket_t1::Ticket};
+mod new_order;
 
 fn main() {
     println!("Hello, world!");
@@ -12,4 +13,13 @@ fn main() {
     println!("size of usize {}", std::mem::size_of::<String>());
     println!("size of usize {}", std::mem::size_of::<&String>());
     println!("size of usize {}", std::mem::size_of::<&mut String>());
+
+    let mut a:u32 = 10;
+    let b: &u32 = &a;
+    println!("a={}", a);
+    println!("b={}", *b);
+    std::mem::drop(a);
+    //a=15;
+    println!("a={}", a);
+    println!("b={}", *b);
 }
