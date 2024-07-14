@@ -1,6 +1,6 @@
-    pub trait IsEven {
-        fn is_even(&self) -> bool;
-    }
+pub trait IsEven {
+    fn is_even(&self) -> bool;
+}
     
 mod mytraits { 
     use crate::traits1::IsEven;
@@ -24,7 +24,7 @@ mod mytraits {
     }
 }
 
-mod unsigned_no {
+pub mod unsigned_no {
     use crate::traits1::IsEven;
     impl IsEven for u32 {
         fn is_even(&self) -> bool {
