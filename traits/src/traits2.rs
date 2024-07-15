@@ -10,6 +10,7 @@ impl PartialEq for u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
     fn test_eq() {
         assert!(5_u32.eq(5_u32));
     }
