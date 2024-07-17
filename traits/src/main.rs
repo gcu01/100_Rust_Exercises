@@ -4,7 +4,8 @@ mod traits1;
 //mod traits4;
 //mod traits5;
 //mod traits6;
-mod traits7;
+//mod traits7;
+mod traits8;
 use crate::traits1::{IsEven};
 
 fn main() {
