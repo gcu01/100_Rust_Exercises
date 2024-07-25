@@ -1,13 +1,12 @@
-mod helpers;
-//mod ticket1;
-//mod ticket2;
-//mod ticket3;
-//mod ticket4;
-//mod ticket6;
-//mod ticket7;
-mod ticket8;
+// This is a `main.rs` file, therefore `cargo` interprets this as the root of a binary target.
 
+// TODO: fix this broken import. Create a new library target in the `src` directory.
+//   The library target should expose a public function named `hello_world` that takes no arguments
+//   and returns nothing.
+mod hello_world;
+//use crate::hello1_world;
+
+// This is the entrypoint of the binary.
 fn main() {
-    println!("Hello, world!");
+    hello_world::hello1_world();
 }
-
