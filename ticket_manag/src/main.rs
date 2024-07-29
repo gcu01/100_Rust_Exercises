@@ -1,7 +1,8 @@
 //mod manag1;
 //mod manag2;
 //mod manag3;
-mod manag4;
+//mod manag4;
+mod manag5;
 //use crate::manag1::{Weekday, WeekTemperature};
 
 //use crate::manag1::{Weekday, WeekTemperature};
