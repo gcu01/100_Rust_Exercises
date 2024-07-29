@@ -23,7 +23,8 @@ mod tests {
     fn test_empty() {
         let v1:Vec<u32> = vec![];
 
-        let v2:&[u32] = v1.as_slice();
+        //let v2:&[u32] = v1.as_slice();
+        let v2:&[u32] = &v1;
         assert_eq!(0, sum(v2));
     }
 }
